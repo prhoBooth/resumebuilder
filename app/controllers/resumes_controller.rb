@@ -1,5 +1,5 @@
 class ResumesController < ApplicationController
-  before_action :current_user_must_be_resume_user, :only => [:edit, :update, :destroy]
+  before_action :current_user_must_be_resume_user, :only => [:show, :edit, :update, :destroy]
 
   def current_user_must_be_resume_user
     resume = Resume.find(params[:id])
