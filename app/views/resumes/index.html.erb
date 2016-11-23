@@ -16,7 +16,7 @@
 
       <% @resumes.each do |resume| %>
       <tr>
-        <td><%= resume.user_id %></td>
+        <td><%= resume.user.username %></td>
         <td><%= resume.name %></td>
         <td>
           <a href="/resumes/<%= resume.id %>" class="btn btn-primary">Show</a>
