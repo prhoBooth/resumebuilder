@@ -19,7 +19,7 @@
       <% @bullets.each do |bullet| %>
       <tr>
         <td><%= bullet.organization.organization %></td>
-        <td><%= bullet.user_id %></td>
+        <td><%= bullet.user.username %></td>
         <td><%= bullet.type %></td>
         <td><%= bullet.body %></td>
         <td>
