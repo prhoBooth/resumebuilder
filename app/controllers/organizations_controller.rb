@@ -1,4 +1,14 @@
 class OrganizationsController < ApplicationController
+  before_action :current_user_must_be_organization_user, :only => [:edit, :update, :destroy]
+
+  def current_user_must_be_organization_user
+    organization = Organization.find(params[:id])
+
+    unless current_user == organization.user
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
     @organizations = Organization.all
 
