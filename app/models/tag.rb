@@ -6,6 +6,10 @@ class Tag < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :bullets,
+             :through => :bullet_tags,
+             :source => :bullet
+
   # Validations
 
 end
