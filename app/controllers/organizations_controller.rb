@@ -10,7 +10,7 @@ class OrganizationsController < ApplicationController
   end
 
   def index
-    @organizations = Organization.all
+    @organizations = current_user.organizations.page(params[:page]).per(10)
 
     render("organizations/index.html.erb")
   end
