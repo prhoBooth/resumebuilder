@@ -17,7 +17,7 @@
     <form action="/update_bullet/<%= @bullet.id %>" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
+<input name="user_id" type="hidden" value="<%= current_user.id %>">
       <!-- Label and input for organization_id -->
       <div class="form-group">
         <label for="organization_id" class="control-label">
@@ -27,16 +27,16 @@
         <%= select_tag(:organization_id, options_from_collection_for_select(Organization.all, :id, :organization, @bullet.organization_id), :class => "form-control") %>
       </div>
 
-      
-      
+
+
 
       <!-- Label and input for type -->
       <div class="form-group">
-        <label for="type" class="control-label">
+        <label for="category" class="control-label">
           Type
         </label>
 
-        <input type="text" id="type" name="type" placeholder="Type" class="form-control" value="<%= @bullet.type %>">
+        <input type="text" id="category" name="category" placeholder="category" class="form-control" value="<%= @bullet.category %>">
       </div>
 
       <!-- Label and input for body -->

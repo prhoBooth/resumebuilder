@@ -1,6 +1,6 @@
 <div class="page-header">
   <h1>
-    Bullets
+    <%=current_user.username.capitalize%>'s History
     <a href="/bullets/new" class="btn btn-lg btn-success">New Bullet</a>
   </h1>
 </div><div class="row mb-1">
@@ -14,8 +14,8 @@
   </div>
 
 <div class="form-group">
-    <%= f.label :type_cont, "Type contains" %>
-    <%= f.text_field :type_cont, :class => "form-control", :placeholder => "Type contains" %>
+    <%= f.label :category_cont, "Type contains" %>
+    <%= f.text_field :category_cont, :class => "form-control", :placeholder => "Type contains" %>
   </div>
 
 <div class="form-group">
@@ -88,18 +88,21 @@
   </div>
 </div>
 
+<%@organizations.each do |organization|%>
+<h3><a href="/organizations/<%=organization.id%>"> <%=organization.organization%> </a> | <%=organization.start_month%> - <%=organization.end_month%></h3>
+
+
 <div class="row">
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
         <th>Organization</th>
-        <th>User</th>
         <th>Type</th>
         <th>Body</th>
         <th>Actions</th>
       </tr>
 
-      <% @bullets.each do |bullet| %>
+      <% organization.bullets.each do |bullet| %>
       <tr>
         <td>
           <% if bullet.organization.present? %>
@@ -108,18 +111,14 @@
             </a>
           <% end %>
         </td>
-        <td>
-          <% if bullet.user.present? %>
-            <a href="/users/<%= bullet.user.id %>">
-              <%= bullet.user.username %>
-            </a>
-          <% end %>
+        <td><%= bullet.category %></td>
+        <td><%= bullet.body %>
+        <br><small class="text-muted"><%=bullet.tags.pluck(:tag_name).to_sentence%></small>
         </td>
-        <td><%= bullet.type %></td>
-        <td><%= bullet.body %></td>
+
         <td>
           <a href="/bullets/<%= bullet.id %>" class="btn btn-primary">Show</a>
-          
+
           <% if current_user == bullet.user %>
             <a href="/bullets/<%= bullet.id %>/edit" class="btn btn-warning">Edit</a>
             <a href="/delete_bullet/<%= bullet.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
@@ -129,5 +128,9 @@
       <% end %>
     </table>
     <%= paginate @bullets, theme: 'twitter-bootstrap-4' %>
+
+
+<%end%>
+
   </div>
 </div>

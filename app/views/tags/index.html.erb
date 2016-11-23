@@ -1,98 +1,20 @@
 <div class="page-header">
   <h1>
     Tags
-    <a href="/tags/new" class="btn btn-lg btn-success">New Tag</a>
+    <!-- <a href="/tags/new" class="btn btn-lg btn-success">New Tag</a> -->
   </h1>
-</div><div class="row mb-1">
-  <div class="col-md-12">
-    <%= search_form_for @q, :class => "collapse", :id => "tags_filters" do |f| %>
-      <p class="lead">Narrow results:</p>
-
-        <div class="form-group">
-    <%= f.label :tag_name_cont, "Tag name contains" %>
-    <%= f.text_field :tag_name_cont, :class => "form-control", :placeholder => "Tag name contains" %>
-  </div>
-
-<div class="form-group">
-  <%= f.label :user_id, "User" %>
-  <div class="row">
-    <div class='col-md-6 mb-1'>
-      <%= f.text_field :user_id_gteq, :class => "form-control", :placeholder => "User greater than or equal to" %>
-    </div>
-    <div class='col-md-6'>
-      <%= f.text_field :user_id_lteq, :class => "form-control", :placeholder => "User less than or equal to" %>
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
-          <%= f.label :created_at, "Created at" %>
-          <div class="row">
-            <div class='col-md-6 mb-1'>
-              <div class='input-group date' id='created_atgteqPicker'>
-                  <%= f.text_field :created_at_gteq, :class => "form-control", :placeholder => "Created at greater than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-            </div>
-
-            <div class='col-md-6'>
-              <div class='input-group date' id='created_atlteqPicker'>
-                  <%= f.text_field :created_at_lteq, :class => "form-control", :placeholder => "Created at less than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-            </div>
-          </div>
-      </div>
-      <script type="text/javascript">
-          $(function () {
-              $('#created_atgteqPicker').datetimepicker({
-                  format: 'YYYY-MM-DD hh:mm:SS'
-              });
-              $('#created_atlteqPicker').datetimepicker({
-                  useCurrent: false,
-                  format: 'YYYY-MM-DD hh:mm:SS'
-              });
-              $('#created_atgteqPicker').on("dp.change", function (e) {
-                  $('#created_atlteqPicker').data("DateTimePicker").minDate(e.date);
-              });
-              $('#created_atlteqPicker').on("dp.change", function (e) {
-                  $('#created_atgteqPicker').data("DateTimePicker").maxDate(e.date);
-              });
-          });
-      </script>
-
-        <div class="form-group">
-      <%= f.label :bullets_body_cont, "Bullet body contains" %>
-      <%= f.text_field :bullets_body_cont, :class => "form-control", :placeholder => "Bullet body contains" %>
-    </div>
-
-      <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
-
-      <a href="/tags" class="btn btn-default btn-block mb-1">Clear filters</a>
-    <% end %>
-    <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#tags_filters">
-      Show Filters
-    </a>
-  </div>
-</div>
 
 <div class="row">
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
         <th>Tag name</th>
-        <th>User</th>
         <th>Actions</th>
       </tr>
 
       <% @tags.each do |tag| %>
       <tr>
         <td><%= tag.tag_name %></td>
-        <td><%= tag.user_id %></td>
         <td>
           <a href="/tags/<%= tag.id %>" class="btn btn-primary">Show</a>
           <a href="/tags/<%= tag.id %>/edit" class="btn btn-warning">Edit</a>
@@ -102,5 +24,55 @@
       <% end %>
     </table>
     <%= paginate @tags, theme: 'twitter-bootstrap-4' %>
+  </div>
+</div>
+
+
+<!-- NEW TAG SECTION ................................................... -->
+<!-- Validation failure messages -->
+<% if @tag.errors.any? %>
+  <% @tag.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+
+</div>
+  <h5>Add Tag</h5>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_tag" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for tag_name -->
+      <div class="form-group">
+        <!-- <label for="tag_name" class="control-label">
+          Tag name
+        </label> -->
+
+        <input type="text" id="tag_name" name="tag_name" placeholder="Tag name" class="form-control" value="<%= @tag.tag_name %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <!-- <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @tag.user_id %>">
+      </div> -->
+
+      <button class="btn btn-success">
+        Create Tag
+      </button>
+      <!-- or
+      <a href="/tags">Cancel</a> -->
+    </form>
   </div>
 </div>

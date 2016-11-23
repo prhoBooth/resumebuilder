@@ -14,8 +14,8 @@
   </div>
 
 <div class="form-group">
-    <%= f.label :type_cont, "Type contains" %>
-    <%= f.text_field :type_cont, :class => "form-control", :placeholder => "Type contains" %>
+    <%= f.label :category_cont, "Type contains" %>
+    <%= f.text_field :category_cont, :class => "form-control", :placeholder => "Type contains" %>
   </div>
 
 <div class="form-group">
@@ -98,7 +98,7 @@
           <% end %>
         </td>
         <td><%= statement.body %></td>
-        <td><%= statement.type %></td>
+        <td><%= statement.category %></td>
         <td>
           <a href="/statements/<%= statement.id %>" class="btn btn-primary">Show</a>
           

@@ -2,7 +2,7 @@ class TagsController < ApplicationController
   def index
     @q = Tag.ransack(params[:q])
     @tags = @q.result(:distinct => true).includes(:bullet_tags, :bullets).page(params[:page]).per(10)
-
+    @tag = Tag.new
     render("tags/index.html.erb")
   end
 

@@ -12,7 +12,7 @@ class BulletsController < ApplicationController
   def index
     @q = current_user.bullets.ransack(params[:q])
       @bullets = @q.result(:distinct => true).includes(:organization, :bullet_tags, :saved_bullets, :user, :tags, :resumes).page(params[:page]).per(10)
-
+      @organizations = current_user.organizations
     render("bullets/index.html.erb")
   end
 
@@ -35,7 +35,7 @@ class BulletsController < ApplicationController
 
     @bullet.organization_id = params[:organization_id]
     @bullet.user_id = params[:user_id]
-    @bullet.type = params[:type]
+    @bullet.category = params[:category]
     @bullet.body = params[:body]
 
     save_status = @bullet.save
@@ -65,7 +65,7 @@ class BulletsController < ApplicationController
 
     @bullet.organization_id = params[:organization_id]
     @bullet.user_id = params[:user_id]
-    @bullet.type = params[:type]
+    @bullet.category = params[:category]
     @bullet.body = params[:body]
 
     save_status = @bullet.save

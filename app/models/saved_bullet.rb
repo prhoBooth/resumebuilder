@@ -3,7 +3,7 @@ class SavedBullet < ApplicationRecord
 
   belongs_to :resume
 
-  belongs_to :bullets,
+  belongs_to :bullet,
              :foreign_key => "bullet_id"
 
   # Indirect associations

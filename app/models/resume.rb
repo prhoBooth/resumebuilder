@@ -17,7 +17,7 @@ class Resume < ApplicationRecord
 
   has_many   :bullets,
              :through => :saved_bullets,
-             :source => :bullets
+             :source => :bullet
 
   # Validations
 

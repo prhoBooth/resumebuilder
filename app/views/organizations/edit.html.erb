@@ -17,6 +17,7 @@
     <form action="/update_organization/<%= @organization.id %>" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+      <input name="user_id" type="hidden" value="<%= current_user.id %>">
 
       <!-- Label and input for organization -->
       <div class="form-group">
@@ -45,8 +46,8 @@
         <input type="text" id="end_month" name="end_month" placeholder="End month" class="form-control" value="<%= @organization.end_month %>">
       </div>
 
-      
-      
+
+
 
       <button class="btn btn-warning">
         Update Organization

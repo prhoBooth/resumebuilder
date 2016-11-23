@@ -58,10 +58,6 @@
       <%= f.text_field :user_username_cont, :class => "form-control", :placeholder => "User username contains" %>
     </div>
 
-<div class="form-group">
-      <%= f.label :bullets_body_cont, "Bullet body contains" %>
-      <%= f.text_field :bullets_body_cont, :class => "form-control", :placeholder => "Bullet body contains" %>
-    </div>
 
 <div class="form-group">
       <%= f.label :statements_body_cont, "Statement body contains" %>
@@ -87,8 +83,8 @@
         <th>Actions</th>
       </tr>
 
-      <% @resumes.each do |resume| %>
-      <tr>
+`      <% @resumes.each do |resume| %>
+`      <tr>
         <td>
           <% if resume.user.present? %>
             <a href="/users/<%= resume.user.id %>">
@@ -99,7 +95,7 @@
         <td><%= resume.name %></td>
         <td>
           <a href="/resumes/<%= resume.id %>" class="btn btn-primary">Show</a>
-          
+
           <% if current_user == resume.user %>
             <a href="/resumes/<%= resume.id %>/edit" class="btn btn-warning">Edit</a>
             <a href="/delete_resume/<%= resume.id %>" class="btn btn-danger" rel="nofollow">Delete</a>

@@ -34,7 +34,7 @@ class StatementsController < ApplicationController
 
     @statement.user_id = params[:user_id]
     @statement.body = params[:body]
-    @statement.type = params[:type]
+    @statement.category = params[:category]
 
     save_status = @statement.save
 
@@ -63,7 +63,7 @@ class StatementsController < ApplicationController
 
     @statement.user_id = params[:user_id]
     @statement.body = params[:body]
-    @statement.type = params[:type]
+    @statement.category = params[:category]
 
     save_status = @statement.save
 
