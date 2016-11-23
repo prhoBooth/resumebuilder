@@ -21,7 +21,7 @@
         <td><%= organization.organization %></td>
         <td><%= organization.start_month %></td>
         <td><%= organization.end_month %></td>
-        <td><%= organization.user_id %></td>
+        <td><%= organization.user.username %></td>
         <td>
           <a href="/organizations/<%= organization.id %>" class="btn btn-primary">Show</a>
           <a href="/organizations/<%= organization.id %>/edit" class="btn btn-warning">Edit</a>
