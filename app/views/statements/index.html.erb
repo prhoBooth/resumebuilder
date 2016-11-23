@@ -17,7 +17,7 @@
 
       <% @statements.each do |statement| %>
       <tr>
-        <td><%= statement.user_id %></td>
+        <td><%= statement.user.username %></td>
         <td><%= statement.body %></td>
         <td><%= statement.type %></td>
         <td>
