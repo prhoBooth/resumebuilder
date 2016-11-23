@@ -24,7 +24,7 @@
           Statement
         </label>
 
-        <input type="text" id="statement_id" name="statement_id" placeholder="Statement" class="form-control" value="<%= @saved_statement.statement_id %>">
+        <%= select_tag(:statement_id, options_from_collection_for_select(Statement.all, :id, :body, @saved_statement.statement_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for resume_id -->
