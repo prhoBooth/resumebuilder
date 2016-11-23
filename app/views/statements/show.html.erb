@@ -29,3 +29,65 @@
     </div>
   </div>
 </div>
+
+<!-- A Statement has many saved_statements -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Saved_statements
+      </li>
+
+      <% @statement.saved_statements.each do |saved_statement| %>
+        <li class="list-group-item">
+          <a href="/saved_statements/<%= saved_statement.id %>">
+            <%= saved_statement.id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/saved_statements/<%= saved_statement.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/saved_statements/<%= saved_statement.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_saved_statement/<%= saved_statement.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A Statement has many resumes -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Resumes
+      </li>
+
+      <% @statement.resumes.each do |resume| %>
+        <li class="list-group-item">
+          <a href="/resumes/<%= resume.id %>">
+            <%= resume.name %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/resumes/<%= resume.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/resumes/<%= resume.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_resume/<%= resume.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

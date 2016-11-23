@@ -23,3 +23,127 @@
     </div>
   </div>
 </div>
+
+<!-- A User has many resumes -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Resumes
+      </li>
+
+      <% @user.resumes.each do |resume| %>
+        <li class="list-group-item">
+          <a href="/resumes/<%= resume.id %>">
+            <%= resume.name %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/resumes/<%= resume.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/resumes/<%= resume.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_resume/<%= resume.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many bullets -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Bullets
+      </li>
+
+      <% @user.bullets.each do |bullet| %>
+        <li class="list-group-item">
+          <a href="/bullets/<%= bullet.id %>">
+            <%= bullet.body %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/bullets/<%= bullet.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/bullets/<%= bullet.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_bullet/<%= bullet.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many organizations -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Organizations
+      </li>
+
+      <% @user.organizations.each do |organization| %>
+        <li class="list-group-item">
+          <a href="/organizations/<%= organization.id %>">
+            <%= organization.organization %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/organizations/<%= organization.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/organizations/<%= organization.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_organization/<%= organization.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many statements -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Statements
+      </li>
+
+      <% @user.statements.each do |statement| %>
+        <li class="list-group-item">
+          <a href="/statements/<%= statement.id %>">
+            <%= statement.body %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/statements/<%= statement.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/statements/<%= statement.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_statement/<%= statement.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

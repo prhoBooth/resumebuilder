@@ -32,3 +32,34 @@
     </div>
   </div>
 </div>
+
+<!-- A Organization has many bullets -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Bullets
+      </li>
+
+      <% @organization.bullets.each do |bullet| %>
+        <li class="list-group-item">
+          <a href="/bullets/<%= bullet.id %>">
+            <%= bullet.body %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/bullets/<%= bullet.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/bullets/<%= bullet.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_bullet/<%= bullet.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

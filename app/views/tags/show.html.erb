@@ -26,3 +26,65 @@
     </div>
   </div>
 </div>
+
+<!-- A Tag has many bullet_tags -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Bullet_tags
+      </li>
+
+      <% @tag.bullet_tags.each do |bullet_tag| %>
+        <li class="list-group-item">
+          <a href="/bullet_tags/<%= bullet_tag.id %>">
+            <%= bullet_tag.id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/bullet_tags/<%= bullet_tag.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/bullet_tags/<%= bullet_tag.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_bullet_tag/<%= bullet_tag.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A Tag has many bullets -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Bullets
+      </li>
+
+      <% @tag.bullets.each do |bullet| %>
+        <li class="list-group-item">
+          <a href="/bullets/<%= bullet.id %>">
+            <%= bullet.body %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/bullets/<%= bullet.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/bullets/<%= bullet.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_bullet/<%= bullet.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
