@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @organization.errors.any? %>
+  <% @organization.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Organization #<%= @organization.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_organization/<%= @organization.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for organization -->
+      <div class="form-group">
+        <label for="organization" class="control-label">
+          Organization
+        </label>
+
+        <input type="text" id="organization" name="organization" placeholder="Organization" class="form-control" value="<%= @organization.organization %>">
+      </div>
+
+      <!-- Label and input for start_month -->
+      <div class="form-group">
+        <label for="start_month" class="control-label">
+          Start month
+        </label>
+
+        <input type="text" id="start_month" name="start_month" placeholder="Start month" class="form-control" value="<%= @organization.start_month %>">
+      </div>
+
+      <!-- Label and input for end_month -->
+      <div class="form-group">
+        <label for="end_month" class="control-label">
+          End month
+        </label>
+
+        <input type="text" id="end_month" name="end_month" placeholder="End month" class="form-control" value="<%= @organization.end_month %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @organization.user_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Organization
+      </button>
+      or
+      <a href="/organizations/<%= @organization.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
