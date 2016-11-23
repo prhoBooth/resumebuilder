@@ -62,6 +62,29 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_bullet_tag" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for bullet_id -->
+      <input type="hidden" name="bullet_id" value="<%= @bullet.id %>">
+
+      <!-- Label and input for tag_id -->
+      <div class="form-group">
+        <label for="tag_id" class="control-label">
+          Tag
+        </label>
+
+        <%= select_tag(:tag_id, options_from_collection_for_select(Tag.all, :id, :tag_name), :class => "form-control") %>
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Bullet Tag
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
@@ -93,6 +116,29 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_saved_bullet" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for bullet_id -->
+      <input type="hidden" name="bullet_id" value="<%= @bullet.id %>">
+
+      <!-- Label and input for resume_id -->
+      <div class="form-group">
+        <label for="resume_id" class="control-label">
+          Resume
+        </label>
+
+        <%= select_tag(:resume_id, options_from_collection_for_select(Resume.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Saved Bullet
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>

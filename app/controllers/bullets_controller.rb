@@ -16,6 +16,8 @@ class BulletsController < ApplicationController
   end
 
   def show
+    @saved_bullet = SavedBullet.new
+    @bullet_tag = BulletTag.new
     @bullet = Bullet.find(params[:id])
 
     render("bullets/show.html.erb")

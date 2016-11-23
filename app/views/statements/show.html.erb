@@ -59,6 +59,29 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_saved_statement" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for statement_id -->
+      <input type="hidden" name="statement_id" value="<%= @statement.id %>">
+
+      <!-- Label and input for resume_id -->
+      <div class="form-group">
+        <label for="resume_id" class="control-label">
+          Resume
+        </label>
+
+        <%= select_tag(:resume_id, options_from_collection_for_select(Resume.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Saved Statement
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>

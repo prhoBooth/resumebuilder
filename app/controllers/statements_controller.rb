@@ -16,6 +16,7 @@ class StatementsController < ApplicationController
   end
 
   def show
+    @saved_statement = SavedStatement.new
     @statement = Statement.find(params[:id])
 
     render("statements/show.html.erb")
