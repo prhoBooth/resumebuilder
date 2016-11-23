@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Saved_statement resource:
+  # CREATE
+  get "/saved_statements/new", :controller => "saved_statements", :action => "new"
+  post "/create_saved_statement", :controller => "saved_statements", :action => "create"
+
+  # READ
+  get "/saved_statements", :controller => "saved_statements", :action => "index"
+  get "/saved_statements/:id", :controller => "saved_statements", :action => "show"
+
+  # UPDATE
+  get "/saved_statements/:id/edit", :controller => "saved_statements", :action => "edit"
+  post "/update_saved_statement/:id", :controller => "saved_statements", :action => "update"
+
+  # DELETE
+  get "/delete_saved_statement/:id", :controller => "saved_statements", :action => "destroy"
+  #------------------------------
+
   # Routes for the Saved_bullet resource:
   # CREATE
   get "/saved_bullets/new", :controller => "saved_bullets", :action => "new"

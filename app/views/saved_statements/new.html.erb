@@ -1,0 +1,46 @@
+<!-- Validation failure messages -->
+<% if @saved_statement.errors.any? %>
+  <% @saved_statement.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Saved Statement</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_saved_statement" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for statement_id -->
+      <div class="form-group">
+        <label for="statement_id" class="control-label">
+          Statement
+        </label>
+
+        <input type="text" id="statement_id" name="statement_id" placeholder="Statement" class="form-control" value="<%= @saved_statement.statement_id %>">
+      </div>
+
+      <!-- Label and input for resume_id -->
+      <div class="form-group">
+        <label for="resume_id" class="control-label">
+          Resume
+        </label>
+
+        <input type="text" id="resume_id" name="resume_id" placeholder="Resume" class="form-control" value="<%= @saved_statement.resume_id %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Saved Statement
+      </button>
+      or
+      <a href="/saved_statements">Cancel</a>
+    </form>
+  </div>
+</div>
