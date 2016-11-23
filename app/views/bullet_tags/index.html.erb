@@ -1,0 +1,30 @@
+<div class="page-header">
+  <h1>
+    Bullet tags
+    <a href="/bullet_tags/new" class="btn btn-lg btn-success">New Bullet tag</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Bullet</th>
+        <th>Tag</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @bullet_tags.each do |bullet_tag| %>
+      <tr>
+        <td><%= bullet_tag.bullet_id %></td>
+        <td><%= bullet_tag.tag_id %></td>
+        <td>
+          <a href="/bullet_tags/<%= bullet_tag.id %>" class="btn btn-primary">Show</a>
+          <a href="/bullet_tags/<%= bullet_tag.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_bullet_tag/<%= bullet_tag.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

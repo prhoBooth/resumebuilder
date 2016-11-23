@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h3>Bullet Tag #<%= @bullet_tag.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Bullet</dt>
+      <dd><%= @bullet_tag.bullet_id %></dd>
+
+      <dt>Tag</dt>
+      <dd><%= @bullet_tag.tag_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/bullet_tags" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/bullet_tags/<%= @bullet_tag.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_bullet_tag/<%= @bullet_tag.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Bullet_tag resource:
+  # CREATE
+  get "/bullet_tags/new", :controller => "bullet_tags", :action => "new"
+  post "/create_bullet_tag", :controller => "bullet_tags", :action => "create"
+
+  # READ
+  get "/bullet_tags", :controller => "bullet_tags", :action => "index"
+  get "/bullet_tags/:id", :controller => "bullet_tags", :action => "show"
+
+  # UPDATE
+  get "/bullet_tags/:id/edit", :controller => "bullet_tags", :action => "edit"
+  post "/update_bullet_tag/:id", :controller => "bullet_tags", :action => "update"
+
+  # DELETE
+  get "/delete_bullet_tag/:id", :controller => "bullet_tags", :action => "destroy"
+  #------------------------------
+
   devise_for :users
   # Routes for the User resource:
   # READ
