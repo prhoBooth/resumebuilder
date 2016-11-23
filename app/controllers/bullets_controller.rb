@@ -1,4 +1,14 @@
 class BulletsController < ApplicationController
+  before_action :current_user_must_be_bullet_user, :only => [:edit, :update, :destroy]
+
+  def current_user_must_be_bullet_user
+    bullet = Bullet.find(params[:id])
+
+    unless current_user == bullet.user
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
     @bullets = Bullet.all
 
