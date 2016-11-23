@@ -18,7 +18,7 @@
 
       <% @bullets.each do |bullet| %>
       <tr>
-        <td><%= bullet.organization_id %></td>
+        <td><%= bullet.organization.organization %></td>
         <td><%= bullet.user_id %></td>
         <td><%= bullet.type %></td>
         <td><%= bullet.body %></td>
