@@ -10,7 +10,7 @@ class StatementsController < ApplicationController
   end
 
   def index
-    @statements = Statement.all
+    @statements = current_user.statements.page(params[:page]).per(10)
 
     render("statements/index.html.erb")
   end
