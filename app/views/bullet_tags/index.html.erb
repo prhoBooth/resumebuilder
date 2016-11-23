@@ -16,7 +16,7 @@
 
       <% @bullet_tags.each do |bullet_tag| %>
       <tr>
-        <td><%= bullet_tag.bullet_id %></td>
+        <td><%= bullet_tag.bullet.body %></td>
         <td><%= bullet_tag.tag_id %></td>
         <td>
           <a href="/bullet_tags/<%= bullet_tag.id %>" class="btn btn-primary">Show</a>
