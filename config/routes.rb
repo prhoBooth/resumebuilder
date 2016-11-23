@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Bullet resource:
+  # CREATE
+  get "/bullets/new", :controller => "bullets", :action => "new"
+  post "/create_bullet", :controller => "bullets", :action => "create"
+
+  # READ
+  get "/bullets", :controller => "bullets", :action => "index"
+  get "/bullets/:id", :controller => "bullets", :action => "show"
+
+  # UPDATE
+  get "/bullets/:id/edit", :controller => "bullets", :action => "edit"
+  post "/update_bullet/:id", :controller => "bullets", :action => "update"
+
+  # DELETE
+  get "/delete_bullet/:id", :controller => "bullets", :action => "destroy"
+  #------------------------------
+
   # Routes for the Organization resource:
   # CREATE
   get "/organizations/new", :controller => "organizations", :action => "new"

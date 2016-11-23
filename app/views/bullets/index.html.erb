@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h1>
+    Bullets
+    <a href="/bullets/new" class="btn btn-lg btn-success">New Bullet</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Organization</th>
+        <th>User</th>
+        <th>Type</th>
+        <th>Body</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @bullets.each do |bullet| %>
+      <tr>
+        <td><%= bullet.organization_id %></td>
+        <td><%= bullet.user_id %></td>
+        <td><%= bullet.type %></td>
+        <td><%= bullet.body %></td>
+        <td>
+          <a href="/bullets/<%= bullet.id %>" class="btn btn-primary">Show</a>
+          <a href="/bullets/<%= bullet.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_bullet/<%= bullet.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
