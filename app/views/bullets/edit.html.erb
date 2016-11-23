@@ -24,7 +24,7 @@
           Organization
         </label>
 
-        <input type="text" id="organization_id" name="organization_id" placeholder="Organization" class="form-control" value="<%= @bullet.organization_id %>">
+        <%= select_tag(:organization_id, options_from_collection_for_select(Organization.all, :id, :organization, @bullet.organization_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for user_id -->
