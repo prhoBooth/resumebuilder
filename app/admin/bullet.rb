@@ -1,5 +1,7 @@
 ActiveAdmin.register Bullet do
 
+ permit_params :organization_id, :user_id, :type, :body
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
