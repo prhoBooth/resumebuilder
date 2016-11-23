@@ -1,6 +1,8 @@
 class Bullet < ApplicationRecord
   # Direct associations
 
+  belongs_to :user
+
   has_many   :saved_bullets,
              :dependent => :destroy
 
