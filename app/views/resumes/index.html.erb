@@ -20,8 +20,11 @@
         <td><%= resume.name %></td>
         <td>
           <a href="/resumes/<%= resume.id %>" class="btn btn-primary">Show</a>
-          <a href="/resumes/<%= resume.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_resume/<%= resume.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == resume.user %>
+            <a href="/resumes/<%= resume.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_resume/<%= resume.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
