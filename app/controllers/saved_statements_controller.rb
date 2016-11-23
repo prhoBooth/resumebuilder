@@ -1,6 +1,6 @@
 class SavedStatementsController < ApplicationController
   def index
-    @saved_statements = SavedStatement.all
+    @saved_statements = SavedStatement.page(params[:page]).per(10)
 
     render("saved_statements/index.html.erb")
   end

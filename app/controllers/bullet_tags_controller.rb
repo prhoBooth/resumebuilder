@@ -1,6 +1,6 @@
 class BulletTagsController < ApplicationController
   def index
-    @bullet_tags = BulletTag.all
+    @bullet_tags = BulletTag.page(params[:page]).per(10)
 
     render("bullet_tags/index.html.erb")
   end
