@@ -1,6 +1,7 @@
 class SavedBulletsController < ApplicationController
   def index
-    @saved_bullets = SavedBullet.page(params[:page]).per(10)
+    @q = SavedBullet.ransack(params[:q])
+    @saved_bullets = @q.result(:distinct => true).includes(:bullets, :resume).page(params[:page]).per(10)
 
     render("saved_bullets/index.html.erb")
   end

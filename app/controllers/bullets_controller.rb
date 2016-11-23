@@ -10,7 +10,8 @@ class BulletsController < ApplicationController
   end
 
   def index
-    @bullets = current_user.bullets.page(params[:page]).per(10)
+    @q = current_user.bullets.ransack(params[:q])
+      @bullets = @q.result(:distinct => true).includes(:organization, :bullet_tags, :saved_bullets, :user, :tags, :resumes).page(params[:page]).per(10)
 
     render("bullets/index.html.erb")
   end

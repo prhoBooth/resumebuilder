@@ -1,6 +1,7 @@
 class BulletTagsController < ApplicationController
   def index
-    @bullet_tags = BulletTag.page(params[:page]).per(10)
+    @q = BulletTag.ransack(params[:q])
+    @bullet_tags = @q.result(:distinct => true).includes(:bullet, :tag).page(params[:page]).per(10)
 
     render("bullet_tags/index.html.erb")
   end

@@ -10,7 +10,8 @@ class StatementsController < ApplicationController
   end
 
   def index
-    @statements = current_user.statements.page(params[:page]).per(10)
+    @q = current_user.statements.ransack(params[:q])
+      @statements = @q.result(:distinct => true).includes(:user, :saved_statements, :resumes).page(params[:page]).per(10)
 
     render("statements/index.html.erb")
   end

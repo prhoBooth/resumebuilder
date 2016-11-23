@@ -10,7 +10,8 @@ class OrganizationsController < ApplicationController
   end
 
   def index
-    @organizations = current_user.organizations.page(params[:page]).per(10)
+    @q = current_user.organizations.ransack(params[:q])
+      @organizations = @q.result(:distinct => true).includes(:bullets, :user).page(params[:page]).per(10)
 
     render("organizations/index.html.erb")
   end

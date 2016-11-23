@@ -1,6 +1,7 @@
 class SavedStatementsController < ApplicationController
   def index
-    @saved_statements = SavedStatement.page(params[:page]).per(10)
+    @q = SavedStatement.ransack(params[:q])
+    @saved_statements = @q.result(:distinct => true).includes(:statement, :resume).page(params[:page]).per(10)
 
     render("saved_statements/index.html.erb")
   end
