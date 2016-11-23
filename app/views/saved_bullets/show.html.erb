@@ -6,10 +6,22 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Bullet</dt>
-      <dd><%= @saved_bullet.bullet_id %></dd>
+      <dd>
+        <% if @saved_bullet.bullets.present? %>
+          <a href="/bullets/<%= @saved_bullet.bullet_id %>">
+            <%= @saved_bullet.bullets.body %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Resume</dt>
-      <dd><%= @saved_bullet.resume_id %></dd>
+      <dd>
+        <% if @saved_bullet.resume.present? %>
+          <a href="/resumes/<%= @saved_bullet.resume_id %>">
+            <%= @saved_bullet.resume.name %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

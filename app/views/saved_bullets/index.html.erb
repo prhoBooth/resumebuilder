@@ -16,8 +16,20 @@
 
       <% @saved_bullets.each do |saved_bullet| %>
       <tr>
-        <td><%= saved_bullet.bullets.body %></td>
-        <td><%= saved_bullet.resume.name %></td>
+        <td>
+          <% if saved_bullet.bullets.present? %>
+            <a href="/bullets/<%= saved_bullet.bullets.id %>">
+              <%= saved_bullet.bullets.body %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if saved_bullet.resume.present? %>
+            <a href="/resumes/<%= saved_bullet.resume.id %>">
+              <%= saved_bullet.resume.name %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/saved_bullets/<%= saved_bullet.id %>" class="btn btn-primary">Show</a>
           <a href="/saved_bullets/<%= saved_bullet.id %>/edit" class="btn btn-warning">Edit</a>

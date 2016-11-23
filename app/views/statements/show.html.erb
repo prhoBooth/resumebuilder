@@ -6,7 +6,13 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>User</dt>
-      <dd><%= @statement.user_id %></dd>
+      <dd>
+        <% if @statement.user.present? %>
+          <a href="/users/<%= @statement.user_id %>">
+            <%= @statement.user.username %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Body</dt>
       <dd><%= @statement.body %></dd>

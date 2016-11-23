@@ -16,7 +16,13 @@
 
       <% @resumes.each do |resume| %>
       <tr>
-        <td><%= resume.user.username %></td>
+        <td>
+          <% if resume.user.present? %>
+            <a href="/users/<%= resume.user.id %>">
+              <%= resume.user.username %>
+            </a>
+          <% end %>
+        </td>
         <td><%= resume.name %></td>
         <td>
           <a href="/resumes/<%= resume.id %>" class="btn btn-primary">Show</a>

@@ -18,8 +18,20 @@
 
       <% @bullets.each do |bullet| %>
       <tr>
-        <td><%= bullet.organization.organization %></td>
-        <td><%= bullet.user.username %></td>
+        <td>
+          <% if bullet.organization.present? %>
+            <a href="/organizations/<%= bullet.organization.id %>">
+              <%= bullet.organization.organization %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if bullet.user.present? %>
+            <a href="/users/<%= bullet.user.id %>">
+              <%= bullet.user.username %>
+            </a>
+          <% end %>
+        </td>
         <td><%= bullet.type %></td>
         <td><%= bullet.body %></td>
         <td>

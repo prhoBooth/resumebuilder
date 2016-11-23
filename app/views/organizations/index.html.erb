@@ -21,7 +21,13 @@
         <td><%= organization.organization %></td>
         <td><%= organization.start_month %></td>
         <td><%= organization.end_month %></td>
-        <td><%= organization.user.username %></td>
+        <td>
+          <% if organization.user.present? %>
+            <a href="/users/<%= organization.user.id %>">
+              <%= organization.user.username %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/organizations/<%= organization.id %>" class="btn btn-primary">Show</a>
           

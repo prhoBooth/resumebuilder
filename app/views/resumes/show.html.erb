@@ -6,7 +6,13 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>User</dt>
-      <dd><%= @resume.user_id %></dd>
+      <dd>
+        <% if @resume.user.present? %>
+          <a href="/users/<%= @resume.user_id %>">
+            <%= @resume.user.username %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Name</dt>
       <dd><%= @resume.name %></dd>

@@ -15,7 +15,13 @@
       <dd><%= @organization.end_month %></dd>
 
       <dt>User</dt>
-      <dd><%= @organization.user_id %></dd>
+      <dd>
+        <% if @organization.user.present? %>
+          <a href="/users/<%= @organization.user_id %>">
+            <%= @organization.user.username %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

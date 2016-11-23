@@ -17,7 +17,13 @@
 
       <% @statements.each do |statement| %>
       <tr>
-        <td><%= statement.user.username %></td>
+        <td>
+          <% if statement.user.present? %>
+            <a href="/users/<%= statement.user.id %>">
+              <%= statement.user.username %>
+            </a>
+          <% end %>
+        </td>
         <td><%= statement.body %></td>
         <td><%= statement.type %></td>
         <td>

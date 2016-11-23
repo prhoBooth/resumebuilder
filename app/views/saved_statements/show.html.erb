@@ -6,10 +6,22 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Statement</dt>
-      <dd><%= @saved_statement.statement_id %></dd>
+      <dd>
+        <% if @saved_statement.statement.present? %>
+          <a href="/statements/<%= @saved_statement.statement_id %>">
+            <%= @saved_statement.statement.body %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Resume</dt>
-      <dd><%= @saved_statement.resume_id %></dd>
+      <dd>
+        <% if @saved_statement.resume.present? %>
+          <a href="/resumes/<%= @saved_statement.resume_id %>">
+            <%= @saved_statement.resume.name %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 
