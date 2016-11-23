@@ -1,5 +1,5 @@
 class BulletsController < ApplicationController
-  before_action :current_user_must_be_bullet_user, :only => [:edit, :update, :destroy]
+  before_action :current_user_must_be_bullet_user, :only => [:show, :edit, :update, :destroy]
 
   def current_user_must_be_bullet_user
     bullet = Bullet.find(params[:id])
