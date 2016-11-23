@@ -10,7 +10,7 @@ class ResumesController < ApplicationController
   end
 
   def index
-    @resumes = Resume.all
+    @resumes = current_user.resumes.page(params[:page]).per(10)
 
     render("resumes/index.html.erb")
   end
