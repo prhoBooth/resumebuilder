@@ -17,7 +17,7 @@
       <% @saved_statements.each do |saved_statement| %>
       <tr>
         <td><%= saved_statement.statement.body %></td>
-        <td><%= saved_statement.resume_id %></td>
+        <td><%= saved_statement.resume.name %></td>
         <td>
           <a href="/saved_statements/<%= saved_statement.id %>" class="btn btn-primary">Show</a>
           <a href="/saved_statements/<%= saved_statement.id %>/edit" class="btn btn-warning">Edit</a>
