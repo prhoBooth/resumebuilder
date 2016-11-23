@@ -33,7 +33,7 @@
           Resume
         </label>
 
-        <input type="text" id="resume_id" name="resume_id" placeholder="Resume" class="form-control" value="<%= @saved_bullet.resume_id %>">
+        <%= select_tag(:resume_id, options_from_collection_for_select(Resume.all, :id, :name, @saved_bullet.resume_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-success">
