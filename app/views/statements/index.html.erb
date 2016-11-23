@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1>
+    Statements
+    <a href="/statements/new" class="btn btn-lg btn-success">New Statement</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>User</th>
+        <th>Body</th>
+        <th>Type</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @statements.each do |statement| %>
+      <tr>
+        <td><%= statement.user_id %></td>
+        <td><%= statement.body %></td>
+        <td><%= statement.type %></td>
+        <td>
+          <a href="/statements/<%= statement.id %>" class="btn btn-primary">Show</a>
+          <a href="/statements/<%= statement.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_statement/<%= statement.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
