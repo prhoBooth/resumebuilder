@@ -1,0 +1,46 @@
+<!-- Validation failure messages -->
+<% if @saved_bullet.errors.any? %>
+  <% @saved_bullet.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Saved Bullet #<%= @saved_bullet.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_saved_bullet/<%= @saved_bullet.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for bullet_id -->
+      <div class="form-group">
+        <label for="bullet_id" class="control-label">
+          Bullet
+        </label>
+
+        <input type="text" id="bullet_id" name="bullet_id" placeholder="Bullet" class="form-control" value="<%= @saved_bullet.bullet_id %>">
+      </div>
+
+      <!-- Label and input for resume_id -->
+      <div class="form-group">
+        <label for="resume_id" class="control-label">
+          Resume
+        </label>
+
+        <input type="text" id="resume_id" name="resume_id" placeholder="Resume" class="form-control" value="<%= @saved_bullet.resume_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Saved Bullet
+      </button>
+      or
+      <a href="/saved_bullets/<%= @saved_bullet.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
