@@ -13,6 +13,10 @@ class Bullet < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :resumes,
+             :through => :saved_bullets,
+             :source => :resume
+
   has_many   :tags,
              :through => :bullet_tags,
              :source => :tag

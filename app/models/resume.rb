@@ -11,6 +11,10 @@ class Resume < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :bullets,
+             :through => :saved_bullets,
+             :source => :bullets
+
   # Validations
 
 end
