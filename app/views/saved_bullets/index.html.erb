@@ -16,7 +16,7 @@
 
       <% @saved_bullets.each do |saved_bullet| %>
       <tr>
-        <td><%= saved_bullet.bullet_id %></td>
+        <td><%= saved_bullet.bullets.body %></td>
         <td><%= saved_bullet.resume_id %></td>
         <td>
           <a href="/saved_bullets/<%= saved_bullet.id %>" class="btn btn-primary">Show</a>
