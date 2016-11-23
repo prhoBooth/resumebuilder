@@ -8,6 +8,10 @@ class Statement < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :resumes,
+             :through => :saved_statements,
+             :source => :resume
+
   # Validations
 
 end
