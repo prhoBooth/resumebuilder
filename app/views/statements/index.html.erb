@@ -22,8 +22,11 @@
         <td><%= statement.type %></td>
         <td>
           <a href="/statements/<%= statement.id %>" class="btn btn-primary">Show</a>
-          <a href="/statements/<%= statement.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_statement/<%= statement.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == statement.user %>
+            <a href="/statements/<%= statement.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_statement/<%= statement.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
