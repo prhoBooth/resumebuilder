@@ -45,14 +45,8 @@
         <input type="text" id="end_month" name="end_month" placeholder="End month" class="form-control" value="<%= @organization.end_month %>">
       </div>
 
-      <!-- Label and input for user_id -->
-      <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
-
-        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :username, @organization.user_id), :class => "form-control") %>
-      </div>
+      
+      
 
       <button class="btn btn-warning">
         Update Organization
