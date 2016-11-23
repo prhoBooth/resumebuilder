@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "organizations#index"
   # Routes for the Saved_statement resource:
   # CREATE
   get "/saved_statements/new", :controller => "saved_statements", :action => "new"
