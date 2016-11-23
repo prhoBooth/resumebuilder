@@ -1,8 +1,43 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+bullet2 = Bullet.new; bullet2.try(:id=, 2); bullet2.try(:organization_id=, 1); bullet2.try(:user_id=, 1); bullet2.try(:category=, "Work"); bullet2.try(:body=, "Managed staff of 20 employees and taught them how to flip burgers, clean the kitchen, and work the cash register"); bullet2.try(:created_at=, "2016-11-23 02:07:15"); bullet2.try(:updated_at=, "2016-11-23 02:17:16"); Bullet.import([bullet2], :validate => false);
+;
+  bullet3 = Bullet.new; bullet3.try(:id=, 3); bullet3.try(:organization_id=, 1); bullet3.try(:user_id=, 1); bullet3.try(:category=, "Work"); bullet3.try(:body=, "Created marketing campaign around juicy, delicious burgers and created customized chicken fries for customers"); bullet3.try(:created_at=, "2016-11-23 02:20:44"); bullet3.try(:updated_at=, "2016-11-23 02:20:44"); Bullet.import([bullet3], :validate => false);
+;
+  bullet4 = Bullet.new; bullet4.try(:id=, 4); bullet4.try(:organization_id=, 2); bullet4.try(:user_id=, 1); bullet4.try(:category=, "Work"); bullet4.try(:body=, "Learned how to stack boxes on shelves, over and over and over"); bullet4.try(:created_at=, "2016-11-23 02:43:44"); bullet4.try(:updated_at=, "2016-11-23 02:43:44"); Bullet.import([bullet4], :validate => false);
+;
+  bullet5 = Bullet.new; bullet5.try(:id=, 5); bullet5.try(:organization_id=, 3); bullet5.try(:user_id=, 1); bullet5.try(:category=, "Work"); bullet5.try(:body=, "Created so many tacos; ground beef, pork, chicken, veggie, all types of tacos"); bullet5.try(:created_at=, "2016-11-23 04:07:29"); bullet5.try(:updated_at=, "2016-11-23 04:07:29"); Bullet.import([bullet5], :validate => false);
+;
+  bullet6 = Bullet.new; bullet6.try(:id=, 6); bullet6.try(:organization_id=, 1); bullet6.try(:user_id=, 1); bullet6.try(:category=, "Work"); bullet6.try(:body=, "Wore the BK king crown for two weeks to prove that I could absorb the culture of Burger King"); bullet6.try(:created_at=, "2016-11-23 04:08:02"); bullet6.try(:updated_at=, "2016-11-23 04:08:02"); Bullet.import([bullet6], :validate => false);
+;
+  bullet7 = Bullet.new; bullet7.try(:id=, 7); bullet7.try(:organization_id=, 2); bullet7.try(:user_id=, 1); bullet7.try(:category=, "Work"); bullet7.try(:body=, "Worked the cashier register for thirty four years and managed a team of contractors that did my bidding"); bullet7.try(:created_at=, "2016-11-23 04:08:58"); bullet7.try(:updated_at=, "2016-11-23 04:08:58"); Bullet.import([bullet7], :validate => false);
+;
+  bullet8 = Bullet.new; bullet8.try(:id=, 8); bullet8.try(:organization_id=, 3); bullet8.try(:user_id=, 1); bullet8.try(:category=, "Work"); bullet8.try(:body=, "Ground the meat from raw butcher cast off parts that we used for our mystery meat Tacos on wednesdays"); bullet8.try(:created_at=, "2016-11-23 04:10:19"); bullet8.try(:updated_at=, "2016-11-23 04:10:19"); Bullet.import([bullet8], :validate => false);
+;
+  bullet9 = Bullet.new; bullet9.try(:id=, 9); bullet9.try(:organization_id=, 2); bullet9.try(:user_id=, 1); bullet9.try(:category=, "Work"); bullet9.try(:body=, "Painted the bulls-eye logo in front of the store with concentric rings and red paint that was procured from a local artisan's paintshop"); bullet9.try(:created_at=, "2016-11-23 04:10:51"); bullet9.try(:updated_at=, "2016-11-23 04:10:59"); Bullet.import([bullet9], :validate => false);
+bullettag5 = BulletTag.new; bullettag5.try(:id=, 5); bullettag5.try(:bullet_id=, 3); bullettag5.try(:tag_id=, 3); bullettag5.try(:created_at=, "2016-11-23 02:55:24"); bullettag5.try(:updated_at=, "2016-11-23 02:55:24"); BulletTag.import([bullettag5], :validate => false);
+;
+  bullettag6 = BulletTag.new; bullettag6.try(:id=, 6); bullettag6.try(:bullet_id=, 4); bullettag6.try(:tag_id=, 5); bullettag6.try(:created_at=, "2016-11-23 04:14:23"); bullettag6.try(:updated_at=, "2016-11-23 04:14:23"); BulletTag.import([bullettag6], :validate => false);
+;
+  bullettag7 = BulletTag.new; bullettag7.try(:id=, 7); bullettag7.try(:bullet_id=, 4); bullettag7.try(:tag_id=, 3); bullettag7.try(:created_at=, "2016-11-23 04:14:25"); bullettag7.try(:updated_at=, "2016-11-23 04:14:25"); BulletTag.import([bullettag7], :validate => false);
+;
+  bullettag8 = BulletTag.new; bullettag8.try(:id=, 8); bullettag8.try(:bullet_id=, 4); bullettag8.try(:tag_id=, 5); bullettag8.try(:created_at=, "2016-11-23 04:14:28"); bullettag8.try(:updated_at=, "2016-11-23 04:14:28"); BulletTag.import([bullettag8], :validate => false);
+;
+  bullettag12 = BulletTag.new; bullettag12.try(:id=, 12); bullettag12.try(:bullet_id=, 2); bullettag12.try(:tag_id=, 3); bullettag12.try(:created_at=, "2016-11-23 04:33:28"); bullettag12.try(:updated_at=, "2016-11-23 04:33:28"); BulletTag.import([bullettag12], :validate => false);
+;
+  bullettag13 = BulletTag.new; bullettag13.try(:id=, 13); bullettag13.try(:bullet_id=, 2); bullettag13.try(:tag_id=, 5); bullettag13.try(:created_at=, "2016-11-23 04:33:33"); bullettag13.try(:updated_at=, "2016-11-23 04:33:33"); BulletTag.import([bullettag13], :validate => false);
+;
+  bullettag14 = BulletTag.new; bullettag14.try(:id=, 14); bullettag14.try(:bullet_id=, 2); bullettag14.try(:tag_id=, 2); bullettag14.try(:created_at=, "2016-11-23 04:33:49"); bullettag14.try(:updated_at=, "2016-11-23 04:33:49"); BulletTag.import([bullettag14], :validate => false);
+organization1 = Organization.new; organization1.try(:id=, 1); organization1.try(:organization=, "Burger King"); organization1.try(:start_month=, "Feb 2008"); organization1.try(:end_month=, "Sep 2009"); organization1.try(:user_id=, 1); organization1.try(:created_at=, "2016-11-23 01:49:02"); organization1.try(:updated_at=, "2016-11-23 02:20:09"); Organization.import([organization1], :validate => false);
+;
+  organization2 = Organization.new; organization2.try(:id=, 2); organization2.try(:organization=, "Target"); organization2.try(:start_month=, "Mar 2010"); organization2.try(:end_month=, "Dec 2010"); organization2.try(:user_id=, 1); organization2.try(:created_at=, "2016-11-23 01:57:39"); organization2.try(:updated_at=, "2016-11-23 02:32:55"); Organization.import([organization2], :validate => false);
+;
+  organization3 = Organization.new; organization3.try(:id=, 3); organization3.try(:organization=, "Taco Bell"); organization3.try(:start_month=, "Mar 2012"); organization3.try(:end_month=, "June 2015"); organization3.try(:user_id=, 1); organization3.try(:created_at=, "2016-11-23 04:06:29"); organization3.try(:updated_at=, "2016-11-23 04:06:29"); Organization.import([organization3], :validate => false);
+resume2 = Resume.new; resume2.try(:id=, 2); resume2.try(:user_id=, 1); resume2.try(:name=, "Restaurants"); resume2.try(:created_at=, "2016-11-23 01:56:23"); resume2.try(:updated_at=, "2016-11-23 02:47:27"); Resume.import([resume2], :validate => false);
+statement1 = Statement.new; statement1.try(:id=, 1); statement1.try(:user_id=, nil); statement1.try(:body=, "asdfasdf"); statement1.try(:category=, "asdf"); statement1.try(:created_at=, "2016-11-23 02:05:44"); statement1.try(:updated_at=, "2016-11-23 02:05:48"); Statement.import([statement1], :validate => false);
+;
+  statement2 = Statement.new; statement2.try(:id=, 2); statement2.try(:user_id=, 1); statement2.try(:body=, "I am a great manager!"); statement2.try(:category=, "Manager"); statement2.try(:created_at=, "2016-11-23 02:09:06"); statement2.try(:updated_at=, "2016-11-23 02:48:58"); Statement.import([statement2], :validate => false);
+tag2 = Tag.new; tag2.try(:id=, 2); tag2.try(:name=, "Faster Food"); tag2.try(:user_id=, nil); tag2.try(:created_at=, "2016-11-23 02:47:05"); tag2.try(:updated_at=, "2016-11-23 03:58:21"); Tag.import([tag2], :validate => false);
+;
+  tag3 = Tag.new; tag3.try(:id=, 3); tag3.try(:name=, "Management"); tag3.try(:user_id=, nil); tag3.try(:created_at=, "2016-11-23 02:47:14"); tag3.try(:updated_at=, "2016-11-23 02:47:14"); Tag.import([tag3], :validate => false);
+;
+  tag5 = Tag.new; tag5.try(:id=, 5); tag5.try(:name=, "Fine Dining"); tag5.try(:user_id=, nil); tag5.try(:created_at=, "2016-11-23 03:46:09"); tag5.try(:updated_at=, "2016-11-23 03:46:09"); Tag.import([tag5], :validate => false);
+user1 = User.new; user1.try(:id=, 1); user1.try(:email=, "prho@chicagobooth.edu"); user1.try(:encrypted_password=, "$2a$11$a0rWft8PerQ9OLYTDvLUk.v6dqLgdctPc3KBzEur8ZYDKs/fm24Ju"); user1.try(:reset_password_token=, nil); user1.try(:reset_password_sent_at=, nil); user1.try(:remember_created_at=, nil); user1.try(:sign_in_count=, 1); user1.try(:current_sign_in_at=, "2016-11-23 01:48:52"); user1.try(:last_sign_in_at=, "2016-11-23 01:48:52"); user1.try(:current_sign_in_ip=, "::1"); user1.try(:last_sign_in_ip=, "::1"); user1.try(:password=, nil); user1.try(:username=, "paul"); user1.try(:created_at=, "2016-11-23 01:48:52"); user1.try(:updated_at=, "2016-11-23 01:48:52"); User.import([user1], :validate => false);

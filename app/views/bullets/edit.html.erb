@@ -27,18 +27,6 @@
         <%= select_tag(:organization_id, options_from_collection_for_select(Organization.all, :id, :organization, @bullet.organization_id), :class => "form-control") %>
       </div>
 
-
-
-
-      <!-- Label and input for type -->
-      <div class="form-group">
-        <label for="category" class="control-label">
-          Type
-        </label>
-
-        <input type="text" id="category" name="category" placeholder="category" class="form-control" value="<%= @bullet.category %>">
-      </div>
-
       <!-- Label and input for body -->
       <div class="form-group">
         <label for="body" class="control-label">

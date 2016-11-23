@@ -123,6 +123,7 @@
     <table class="table table-striped table-hover">
       <tr>
         <th>Organization</th>
+        <th>Category</th>
         <th>Start month</th>
         <th>End month</th>
         <th>User</th>
@@ -132,6 +133,7 @@
       <% @organizations.each do |organization| %>
       <tr>
         <td><%= organization.organization %></td>
+        <td><%= organization.category %></td>
         <td><%= organization.start_month %></td>
         <td><%= organization.end_month %></td>
         <td>
@@ -143,7 +145,7 @@
         </td>
         <td>
           <a href="/organizations/<%= organization.id %>" class="btn btn-primary">Show</a>
-          
+
           <% if current_user == organization.user %>
             <a href="/organizations/<%= organization.id %>/edit" class="btn btn-warning">Edit</a>
             <a href="/delete_organization/<%= organization.id %>" class="btn btn-danger" rel="nofollow">Delete</a>

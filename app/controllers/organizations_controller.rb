@@ -35,6 +35,7 @@ class OrganizationsController < ApplicationController
     @organization = Organization.new
 
     @organization.organization = params[:organization]
+    @organization.category = params[:category]
     @organization.start_month = params[:start_month]
     @organization.end_month = params[:end_month]
     @organization.user_id = params[:user_id]
@@ -65,6 +66,7 @@ class OrganizationsController < ApplicationController
     @organization = Organization.find(params[:id])
 
     @organization.organization = params[:organization]
+    @organization.category = params[:category]
     @organization.start_month = params[:start_month]
     @organization.end_month = params[:end_month]
     @organization.user_id = params[:user_id]

@@ -22,7 +22,7 @@ class TagsController < ApplicationController
   def create
     @tag = Tag.new
 
-    @tag.tag_name = params[:tag_name]
+    @tag.name = params[:name]
     @tag.user_id = params[:user_id]
 
     save_status = @tag.save
@@ -50,7 +50,7 @@ class TagsController < ApplicationController
   def update
     @tag = Tag.find(params[:id])
 
-    @tag.tag_name = params[:tag_name]
+    @tag.name = params[:name]
     @tag.user_id = params[:user_id]
 
     save_status = @tag.save

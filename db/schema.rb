@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(version: 20161123004408) do
   create_table "bullets", force: :cascade do |t|
     t.integer  "organization_id"
     t.integer  "user_id"
-    t.string   "category"
     t.string   "body"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -61,6 +60,7 @@ ActiveRecord::Schema.define(version: 20161123004408) do
 
   create_table "organizations", force: :cascade do |t|
     t.string   "organization"
+    t.string   "category"
     t.string   "start_month"
     t.string   "end_month"
     t.integer  "user_id"
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 20161123004408) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string   "tag_name"
+    t.string   "name"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

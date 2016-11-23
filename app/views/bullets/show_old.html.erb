@@ -1,0 +1,218 @@
+<div class="page-header">
+  <h3>Bullet #<%= @bullet.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Organization</dt>
+      <dd>
+        <% if @bullet.organization.present? %>
+          <a href="/organizations/<%= @bullet.organization_id %>">
+            <%= @bullet.organization.organization %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>User</dt>
+      <dd>
+        <% if @bullet.user.present? %>
+          <a href="/users/<%= @bullet.user_id %>">
+            <%= @bullet.user.username %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>Type</dt>
+      <dd><%= @bullet.category %></dd>
+
+      <dt>Body</dt>
+      <dd><%= @bullet.body %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/bullets" class="btn btn-primary">
+        Back
+      </a>
+      <% if current_user == @bullet.user %>
+        <a href="/bullets/<%= @bullet.id %>/edit" class="btn btn-warning">
+          Edit
+        </a>
+        <a href="/delete_bullet/<%= @bullet.id %>" class="btn btn-danger" rel="nofollow">
+          Delete
+        </a>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- A Bullet has many bullet_tags -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Bullet_tags
+      </li>
+
+      <% @bullet.bullet_tags.each do |bullet_tag| %>
+        <li class="list-group-item">
+          <a href="/bullet_tags/<%= bullet_tag.id %>">
+            <%= bullet_tag.id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/bullet_tags/<%= bullet_tag.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/bullet_tags/<%= bullet_tag.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_bullet_tag/<%= bullet_tag.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_bullet_tag" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for bullet_id -->
+      <input type="hidden" name="bullet_id" value="<%= @bullet.id %>">
+
+      <!-- Label and input for tag_id -->
+      <div class="form-group">
+        <label for="tag_id" class="control-label">
+          Tag
+        </label>
+
+        <%= select_tag(:tag_id, options_from_collection_for_select(Tag.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Bullet Tag
+      </button>
+    </form>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- A Bullet has many saved_bullets -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Saved_bullets
+      </li>
+
+      <% @bullet.saved_bullets.each do |saved_bullet| %>
+        <li class="list-group-item">
+          <a href="/saved_bullets/<%= saved_bullet.id %>">
+            <%= saved_bullet.id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/saved_bullets/<%= saved_bullet.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/saved_bullets/<%= saved_bullet.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_saved_bullet/<%= saved_bullet.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_saved_bullet" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for bullet_id -->
+      <input type="hidden" name="bullet_id" value="<%= @bullet.id %>">
+
+      <!-- Label and input for resume_id -->
+      <div class="form-group">
+        <label for="resume_id" class="control-label">
+          Resume
+        </label>
+
+        <%= select_tag(:resume_id, options_from_collection_for_select(Resume.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Saved Bullet
+      </button>
+    </form>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- A Bullet has many tags -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Tags
+      </li>
+
+      <% @bullet.tags.each do |tag| %>
+        <li class="list-group-item">
+          <a href="/tags/<%= tag.id %>">
+            <%= tag.name %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/tags/<%= tag.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/tags/<%= tag.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_tag/<%= tag.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A Bullet has many resumes -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Resumes
+      </li>
+
+      <% @bullet.resumes.each do |resume| %>
+        <li class="list-group-item">
+          <a href="/resumes/<%= resume.id %>">
+            <%= resume.name %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/resumes/<%= resume.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/resumes/<%= resume.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_resume/<%= resume.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

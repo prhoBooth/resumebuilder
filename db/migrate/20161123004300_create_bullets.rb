@@ -3,7 +3,6 @@ class CreateBullets < ActiveRecord::Migration
     create_table :bullets do |t|
       t.integer :organization_id
       t.integer :user_id
-      t.string :category
       t.string :body
 
       t.timestamps
