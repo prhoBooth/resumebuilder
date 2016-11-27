@@ -1,70 +1,53 @@
 <div class="page-header">
-  <h3>Bullet #<%= @bullet.id %></h3>
+  <h3><%=@bullet.organization.organization%></h3>
 </div>
 
 <div class="row">
-  <div class="col-md-12 mb-2">
-    <dl class="dl-horizontal">
-      <dt>Organization</dt>
-      <dd>
-        <% if @bullet.organization.present? %>
-          <a href="/organizations/<%= @bullet.organization_id %>">
-            <%= @bullet.organization.organization %>
-          </a>
-        <% end %>
-      </dd>
+  <div class="col-md-12">
+    <form action="/update_bullet/<%= @bullet.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+<input name="user_id" type="hidden" value="<%= current_user.id %>">
+      <!-- Label and input for organization_id -->
+      <div class="form-group">
+        <label for="organization_id" class="control-label">
+          Organization
+        </label>
 
-      <dt>User</dt>
-      <dd>
-        <% if @bullet.user.present? %>
-          <a href="/users/<%= @bullet.user_id %>">
-            <%= @bullet.user.username %>
-          </a>
-        <% end %>
-      </dd>
+        <%= select_tag(:organization_id, options_from_collection_for_select(Organization.all, :id, :organization, @bullet.organization_id), :class => "form-control") %>
+      </div>
 
-      <dt>Body</dt>
-      <dd><%= @bullet.body %></dd>
+      <!-- Label and input for body -->
+      <div class="form-group">
+        <label for="body" class="control-label">
+          Body
+        </label>
 
-    </dl>
+        <input type="text" id="body" name="body" placeholder="Body" class="form-control" value="<%= @bullet.body %>">
+      </div>
 
-    <div class="btn-group btn-group-justified">
-      <a href="/bullets" class="btn btn-primary">
-        Back
-      </a>
-      <% if current_user == @bullet.user %>
-        <a href="/bullets/<%= @bullet.id %>/edit" class="btn btn-warning">
-          Edit
-        </a>
-        <a href="/delete_bullet/<%= @bullet.id %>" class="btn btn-danger" rel="nofollow">
-          Delete
-        </a>
-      <% end %>
-    </div>
+      <button class="btn btn-block btn-warning">
+        Update Bullet
+      </button>
+    </form>
   </div>
 </div>
 
-<!-- A Bullet has many bullet_tags -->
-<br><br>
+<div class="page-header">
+  <h3>Add Tags</h3>
+</div>
+
+
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Tag this Bullet!
-      </li>
-
       <% @bullet.bullet_tags.each do |bullet_tag| %>
         <li class="list-group-item">
           <a href="/bullet_tags/<%= bullet_tag.id %>">
             <%= bullet_tag.tag.name %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
-            <a href="/bullet_tags/<%= bullet_tag.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <a href="/bullet_tags/<%= bullet_tag.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
+
             <a href="/delete_bullet_tag/<%= bullet_tag.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
             </a>
@@ -83,17 +66,27 @@
       <!-- Label and input for tag_id -->
       <div class="form-group">
         <label for="tag_id" class="control-label">
-          Tag
+        Add Tag
         </label>
 
         <%= select_tag(:tag_id, options_from_collection_for_select(Tag.all, :id, :name), :class => "form-control") %>
       </div>
 
       <button class="btn btn-block btn-success">
-        Create Bullet Tag
+        Add Tag
       </button>
     </form>
       </li>
     </ul>
   </div>
 </div>
+
+<!-- Validation failure messages -->
+<% if @bullet.errors.any? %>
+  <% @bullet.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>

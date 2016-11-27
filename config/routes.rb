@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root :to => "bullets#index"
+  root :to => "landing#landing"
   # Routes for the Saved_statement resource:
   # CREATE
   get "/saved_statements/new", :controller => "saved_statements", :action => "new"

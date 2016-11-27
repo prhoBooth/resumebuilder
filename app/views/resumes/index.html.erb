@@ -83,8 +83,8 @@
         <th>Actions</th>
       </tr>
 
-`      <% @resumes.each do |resume| %>
-`      <tr>
+      <% @resumes.each do |resume| %>
+      <tr>
         <td>
           <% if resume.user.present? %>
             <a href="/users/<%= resume.user.id %>">
