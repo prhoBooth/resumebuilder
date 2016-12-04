@@ -60,7 +60,7 @@ class TagsController < ApplicationController
 
       case referer
       when "/tags/#{@tag.id}/edit", "/update_tag"
-        redirect_to("/tags/#{@tag.id}", :notice => "Tag updated successfully.")
+        redirect_to("/tags", :notice => "Tag updated successfully.")
       else
         redirect_back(:fallback_location => "/", :notice => "Tag updated successfully.")
       end

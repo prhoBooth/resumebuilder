@@ -1,71 +1,108 @@
 <!-- Add a bullet at the bottom nav-bar..............  -->
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
+  <br>
+
   <div class="container">
-    <a href="/bullets/new" class="btn btn-success btn-block">
+    <div class="row">
+      <div class="col-sm-offset-3 col-sm-6">
+        <a href="/bullets/new" class="btn btn-success btn-block">
           Add Bullet
         </a>
+      </div>
+    </div>
   </div>
 </nav>
 
-<div class="page-header">
-  <h1>
-    <%=current_user.username.capitalize%>'s History
-    <!-- <a href="/bullets/new" class="btn btn-lg btn-success">New Bullet</a> -->
-  </h1>
 
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <div class="page-header">
+        <h3><a href="/bullets"><%=current_user.username.capitalize%>'s History</a></h3>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <br>
+      <form action="/bullets" method="get">
+        <%= select_tag(:tag_id, options_from_collection_for_select(Tag.all, :id, :name), :class => "form-control") %>
 
-<%@organizations.each do |organization|%>
-<table width=100%>
-  <tr>
-    <td class="text-left"> <h3><a href="/organizations/<%=organization.id%>">  <%=organization.organization%> </h3> </a> </td>
-    <td class="text-right">
-      <h5> <%=organization.start_month%> - <%=organization.end_month%>  <small> <%=organization.category%></small> </h5>
-    </td>
-  </tr>
-</table>
-
-
-
-<div class="row">
-  <div class="col-md-12">
-    <table class="table table-striped table-hover">
-      <tr>
-        <th>Organization</th>
-        <th>Body</th>
-        <th>Actions</th>
-      </tr>
-
-      <% organization.bullets.each do |bullet| %>
-      <tr>
-        <td>
-          <% if bullet.organization.present? %>
-            <a href="/organizations/<%= bullet.organization.id %>">
-              <%= bullet.organization.organization %>
-            </a>
-          <% end %>
-        </td>
-        <td><%= bullet.body %>
-        <br><small class="text-muted"><%=bullet.tags.pluck(:name).to_sentence%></small>
-        </td>
-
-        <td>
-          <a href="/bullets/<%= bullet.id %>" class=>tag</a>
-
-          <% if current_user == bullet.user %>
-            <a href="/bullets/<%= bullet.id %>/edit" >edit</a>
-            <a href="/delete_bullet/<%= bullet.id %>" rel="nofollow">delete</a>
-          <% end %>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-    <%= paginate @bullets, theme: 'twitter-bootstrap-4' %>
-
-
-<%end%>
-
+        <button class="btn btn-success btn-block">
+          Filter
+        </button>
+      </form>
+    </div>
   </div>
-</div>
 
-<br><br><br><br>
+  <div class="row">
+    <div class="col-sm-12">
+    <%@organizations.each do |organization|%>
+    <table width=100%>
+      <tr>
+        <td class="text-left">
+          <h4>  <img src = "/images/red_shell_logo.png" width=20px></img><a href="/organizations/<%=organization.id%>">  <%=organization.organization%> </h4> </a> </td>
+          <td class="text-right">
+            <h5> <%=organization.start_month%> - <%=organization.end_month%>  <small> <%=organization.category%></small> </h5>
+          </td>
+        </tr>
+      </table>
+
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-striped table-hover">
+            <tr>
+              <!-- <th width=15%>Organization</th> -->
+              <th width=85%>Bullet</th>
+              <th width=15%>Actions</th>
+            </tr>
+
+
+            <%if @bullet_tags == nil %>
+            <% organization.bullets.each do |bullet| %>
+            <tr>
+              <td><%= bullet.body %>
+                <br><small class="text-muted"><%=bullet.tags.pluck(:name).to_sentence%></small>
+              </td>
+
+              <td>
+                <a href="/bullets/<%= bullet.id %>" class=>tag/edit</a>
+
+                <% if current_user == bullet.user %>
+                <a href="/delete_bullet/<%= bullet.id %>" rel="nofollow">delete</a>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+            <% else%>
+            <% organization.bullets.where(id: @bullet_tags).each do |bullet| %>
+            <tr>
+              <td><%= bullet.body %>
+                <br><small class="text-muted"><%=bullet.tags.pluck(:name).to_sentence%></small>
+              </td>
+
+              <td>
+                <a href="/bullets/<%= bullet.id %>" class=>tag/edit</a>
+
+                <% if current_user == bullet.user %>
+                <a href="/delete_bullet/<%= bullet.id %>" rel="nofollow">delete</a>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+            <% end %>
+
+
+
+
+
+          </table>
+
+
+
+          <%end%>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <br><br><br><br>

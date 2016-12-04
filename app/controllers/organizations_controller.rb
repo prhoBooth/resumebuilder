@@ -78,7 +78,7 @@ class OrganizationsController < ApplicationController
 
       case referer
       when "/organizations/#{@organization.id}/edit", "/update_organization"
-        redirect_to("/organizations/#{@organization.id}", :notice => "Organization updated successfully.")
+        redirect_to("/organizations/", :notice => "Organization updated successfully.")
       else
         redirect_back(:fallback_location => "/", :notice => "Organization updated successfully.")
       end

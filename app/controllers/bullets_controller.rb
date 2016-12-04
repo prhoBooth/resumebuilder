@@ -10,9 +10,22 @@ class BulletsController < ApplicationController
   end
 
   def index
-    @q = current_user.bullets.ransack(params[:q])
+
+
+      @q = current_user.bullets.ransack(params[:q])
       @bullets = @q.result(:distinct => true).includes(:organization, :bullet_tags, :saved_bullets, :user, :tags, :resumes).page(params[:page]).per(10)
       @organizations = current_user.organizations
+
+      if params[:tag_id]
+      @bullet_tags = BulletTag.all.where(:tag_id => params[:tag_id]).pluck(:bullet_id)
+      else
+      @bullet_tags = nil
+      end
+
+      @bullets = @bullets.where(id: @bullet_tags)
+
+
+
     render("bullets/index.html.erb")
   end
 
@@ -20,6 +33,7 @@ class BulletsController < ApplicationController
     @saved_bullet = SavedBullet.new
     @bullet_tag = BulletTag.new
     @bullet = Bullet.find(params[:id])
+
 
     render("bullets/show.html.erb")
   end
